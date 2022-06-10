@@ -3,6 +3,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import ArchiveIcon from "@mui/icons-material/Archive";
 import FileCopyIcon from "@mui/icons-material/FileCopy";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import Dashboard from "@mui/icons-material/Dashboard";
 
 export const NAVBAR_DROPDOWN_BUTTONS = [
   {
@@ -88,5 +89,12 @@ export const NAVBAR_DROPDOWN_BUTTONS = [
         icon: <MoreHorizIcon />,
       },
     ],
+  },
+];
+
+export const SIDEMENU_OPTIONS = [
+  {
+    listText: "DashBoard",
+    listIcon: <Dashboard />,
   },
 ];

@@ -1,19 +1,35 @@
+import React, { useState } from "react";
+import Box from "@mui/material/Box";
+
 import "./App.css";
 import NavBar from "./CommonComponents/NavBar";
-import Drawer from "./CommonComponents/Drawer";
+import SideMenu from "./CommonComponents/SideMenu";
 import { UtilityStyles } from "./Constants/Style";
+import DashBoard from "./Screens/DashBoard";
 
 function App() {
+  const [open, setOpen] = useState(false);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
   return (
     <div className="App">
       <div style={{ flex: 1 }}>
         <UtilityStyles />
-
         <NavBar />
+        <Box sx={{ display: "flex" }}>
+          <SideMenu open={open} handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose} />
 
-        {/* <Drawer /> */}
-
-        <p>Hey this is the trello app!</p>
+          <Box component="main" sx={{ flexGrow: 1, p: 3, marginTop: 1 }}>
+            <DashBoard />
+          </Box>
+        </Box>
       </div>
     </div>
   );

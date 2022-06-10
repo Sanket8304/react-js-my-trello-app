@@ -7,18 +7,17 @@ export const StyledMenu = styled((props) => (
     elevation={0}
     anchorOrigin={{
       vertical: "bottom",
-      horizontal: "right",
+      horizontal: "left",
     }}
     transformOrigin={{
       vertical: "top",
-      horizontal: "right",
+      horizontal: "left",
     }}
     {...props}
   />
 ))(({ theme }) => ({
   "& .MuiPaper-root": {
     borderRadius: 3,
-    marginLeft: theme.spacing(7.5),
     minWidth: 180,
     color: theme.palette.mode === "light" ? "rgb(55, 65, 81)" : theme.palette.grey[300],
     boxShadow:

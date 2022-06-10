@@ -7,7 +7,12 @@ export const NavBarWrapper = styled.div`
     height: 50px;
 
     .navbar-title-container {
-      flex: 1;
+      padding: 5px;
+      border-radius: 3px;
+      height: 30px;
+    }
+    .navbar-title-container:hover {
+      background-color: #118ff0;
     }
 
     .navbar-title {
@@ -16,9 +21,6 @@ export const NavBarWrapper = styled.div`
       font-size: 23px;
       padding: 5px;
       border-radius: 3px;
-    }
-    .navbar-title:hover {
-      background-color: #118ff0;
     }
 
     .navbar-icon {
