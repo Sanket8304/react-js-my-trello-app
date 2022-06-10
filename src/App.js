@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import NavBar from "./CommonComponents/NavBar";
+import Drawer from "./CommonComponents/Drawer";
+import { UtilityStyles } from "./Constants/Style";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div style={{ flex: 1 }}>
+        <UtilityStyles />
+
+        <NavBar />
+
+        {/* <Drawer /> */}
+
+        <p>Hey this is the trello app!</p>
+      </div>
     </div>
   );
 }
