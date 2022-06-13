@@ -11,84 +11,104 @@ import { URL_DASHBOARD, URL_WORKSPACES } from "./Paths";
 
 export const NAVBAR_DROPDOWN_BUTTONS = [
   {
+    id: 1,
     btnTitle: "Workspaces",
     drpOptions: [
       {
+        id: 1,
         optionTitle: "Edit",
         icon: <EditIcon />,
       },
       {
+        id: 2,
         optionTitle: "Duplicate",
         icon: <FileCopyIcon />,
       },
       {
+        id: 3,
         optionTitle: "Archive",
         icon: <ArchiveIcon />,
       },
       {
+        id: 4,
         optionTitle: "More",
         icon: <MoreHorizIcon />,
       },
     ],
   },
   {
+    id: 2,
     btnTitle: "Recent",
     drpOptions: [
       {
+        id: 1,
         optionTitle: "Edit",
         icon: <EditIcon />,
       },
       {
+        id: 2,
         optionTitle: "Duplicate",
         icon: <FileCopyIcon />,
       },
       {
+        id: 3,
         optionTitle: "Archive",
         icon: <ArchiveIcon />,
       },
       {
+        id: 4,
         optionTitle: "More",
         icon: <MoreHorizIcon />,
       },
     ],
   },
   {
+    id: 3,
     btnTitle: "Starred",
     drpOptions: [
       {
+        id: 1,
         optionTitle: "Edit",
         icon: <EditIcon />,
       },
       {
+        id: 2,
         optionTitle: "Duplicate",
         icon: <FileCopyIcon />,
       },
       {
+        id: 3,
         optionTitle: "Archive",
         icon: <ArchiveIcon />,
       },
       {
+        id: 4,
         optionTitle: "More",
         icon: <MoreHorizIcon />,
       },
     ],
   },
   {
+    id: 4,
     btnTitle: "Templates",
     drpOptions: [
       {
+        id: 1,
         optionTitle: "Edit",
         icon: <EditIcon />,
       },
       {
+        id: 2,
         optionTitle: "Duplicate",
         icon: <FileCopyIcon />,
       },
       {
+        id: 3,
         optionTitle: "Archive",
         icon: <ArchiveIcon />,
       },
       {
+        id: 4,
         optionTitle: "More",
         icon: <MoreHorizIcon />,
       },

@@ -33,7 +33,7 @@ const NavBar = (props) => {
           </div>
 
           {NAVBAR_DROPDOWN_BUTTONS.map((item) => (
-            <div className="navbar-drpd-container">
+            <div key={item.id} className="navbar-drpd-container">
               <Button
                 id="demo-customized-button"
                 aria-controls={open ? "demo-customized-menu" : undefined}
@@ -56,9 +56,8 @@ const NavBar = (props) => {
                 open={open}
                 onClose={handleClose}>
                 {item.drpOptions.map((option) => (
-                  <MenuItem onClick={handleClose} disableRipple>
+                  <MenuItem key={option.id} onClick={handleClose} disableRipple>
                     {option.icon}
-
                     {option.optionTitle}
                   </MenuItem>
                 ))}
