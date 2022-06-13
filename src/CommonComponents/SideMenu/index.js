@@ -1,4 +1,5 @@
 import React from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -75,7 +76,13 @@ const SideMenu = (props) => {
 
       <List>
         {SIDEMENU_OPTIONS.map((item, index) => (
-          <ListItem key={item.listText} disablePadding sx={{ display: "block" }}>
+          <ListItem
+            button
+            key={item.listText}
+            disablePadding
+            sx={{ display: "block" }}
+            element={<RouterLink />}
+            to={item.url}>
             <ListItemButton
               sx={{
                 minHeight: 48,

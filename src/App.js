@@ -5,7 +5,7 @@ import "./App.css";
 import NavBar from "./CommonComponents/NavBar";
 import SideMenu from "./CommonComponents/SideMenu";
 import { UtilityStyles } from "./Constants/Style";
-import DashBoard from "./Screens/DashBoard";
+import Navigation from "./Navigation";
 
 function App() {
   const [open, setOpen] = useState(false);
@@ -27,7 +27,7 @@ function App() {
           <SideMenu open={open} handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose} />
 
           <Box component="main" sx={{ flexGrow: 1, p: 3, marginTop: 1 }}>
-            <DashBoard />
+            <Navigation />
           </Box>
         </Box>
       </div>
