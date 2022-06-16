@@ -7,14 +7,14 @@ export const UtilityStyles = createGlobalStyle`
     }
     html,
     body{
+        line-height         : 1.2;
+        // min-height          : 100vh;
+        position            : relative;
+        height: 100%;
         margin: 0;
+        overflow: hidden;
         padding: 0;
         background-color:white;
-    }
-    body{
-        line-height         : 1.2;
-        min-height          : 100vh;
-        position            : relative;
     }
     #root {
         display: flex;

@@ -26,7 +26,7 @@ function App() {
         <Box sx={{ display: "flex" }}>
           <SideMenu open={open} handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose} />
 
-          <Box component="main" sx={{ flexGrow: 1, p: 3, marginTop: 1 }}>
+          <Box component="main" sx={{ flexGrow: 1 }}>
             <Navigation />
           </Box>
         </Box>
