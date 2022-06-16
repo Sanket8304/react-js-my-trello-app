@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { Card, CardHeader, CardContent, Button, CardActions } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
@@ -10,29 +10,48 @@ const Workspaces = (props) => {
   const { list, handleAddCards, setCardName, setIsAddCard, cardName } = props;
 
   const inputRef = useRef();
+  const cardListRef = useRef();
+
+  const handleAdd = () => {
+    setIsAddCard();
+  };
+
+  useEffect(() => {
+    let el2 = inputRef.current;
+
+    if (el2) el2.scrollIntoView({ block: "end", behavior: "smooth" });
+  }, [inputRef.current]);
+
+  useEffect(() => {
+    let crdRef = cardListRef.current;
+    if (!list.isAddCard) {
+      if (crdRef) crdRef.scrollIntoView({ block: "end", behavior: "smooth" });
+    }
+  }, [list.isAddCard]);
 
   return (
     <CardBoardWrapper>
       <Card variant="outlined" className=".card-board" sx={{ width: 285, mr: 1, maxHeight: "95%" }}>
         <CardHeader className="card-header" title={list.title} />
         <div
-          ref={inputRef}
+          className="card-list"
+          ref={cardListRef}
           style={{
-            overflowY: "auto",
+            overflowY: "scroll",
             maxHeight: list.isAddCard ? "85vh" : "80vh",
             overflowX: "hidden",
             paddingBlockEnd: list.isAddCard ? 0 : 1,
           }}>
           {list.cardList.length > 0 && (
-            <>
+            <div className="card-list" ref={cardListRef} style={{ paddingBlockEnd: 2 }}>
               {list.cardList.map((card) => (
                 <CardContent sx={{ boxShadow: 3, borderRadius: 2, marginInline: 1 }}>{card.cardTitle}</CardContent>
               ))}
-            </>
+            </div>
           )}
 
           {list.isAddCard && (
-            <>
+            <div className="input-with-btn" ref={inputRef}>
               <CardContent className="">
                 <TextField
                   placeholder="Enter a title for this card…"
@@ -55,18 +74,13 @@ const Workspaces = (props) => {
 
                 <CloseIcon onClick={() => setIsAddCard()} />
               </CardActions>
-            </>
+            </div>
           )}
         </div>
 
         {list.isAddCard ? null : (
           <CardActions>
-            <Button
-              onClick={() => {
-                setIsAddCard();
-                inputRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
-              }}
-              sx={{ mr: 1, height: 25 }}>
+            <Button onClick={() => handleAdd()} sx={{ mr: 1, height: 25 }}>
               <AddIcon />
               Add Card
             </Button>
