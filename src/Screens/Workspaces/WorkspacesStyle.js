@@ -8,13 +8,23 @@ export const DashBoardWrapper = styled.div`
     height: 100vh;
     position: absolute;
     width: 100vw;
-    top: 50px;
+    left: 25px
+    overflow: visible;
+  }
+
+  .board-list {
+    display: flex;
   }
 
   .add-list {
-    height: 95px;
+    height: 90px;
     border-radius: 5px;
     background-color: white;
+  }
+
+  .add-list-btn-container {
+    height: 95px;
+    border-radius: 5px;
   }
 
   .add-list-btn {

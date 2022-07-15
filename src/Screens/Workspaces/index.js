@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import TextField from "@mui/material/TextField";
 import CloseIcon from "@mui/icons-material/Close";
@@ -12,6 +12,9 @@ const Workspaces = () => {
   const [isAddList, setIsAddList] = useState(false);
   const [listName, setListName] = useState(undefined);
   const [cardName, setCardName] = useState(undefined);
+
+  const boardRef = useRef();
+  const inputBoxRef = useRef();
 
   const handleAddList = () => {
     const list = {
@@ -61,11 +64,31 @@ const Workspaces = () => {
     setCardBoards(updatedCardBoards);
   };
 
+  useEffect(() => {
+    let el2 = inputBoxRef.current;
+
+    if (el2) el2.scrollIntoView({ block: "end", behavior: "smooth" });
+  }, [inputBoxRef.current]);
+
+  // useEffect(() => {
+  //   let brdRef = boardRef.current;
+
+  //   if (brdRef) brdRef.scrollIntoView({ inline: "end", behavior: "smooth" });
+  // }, [boardRef.current]);
+
   return (
     <DashBoardWrapper>
-      <div className="dashboard-main-container">
+      <div
+        className="dashboard-main-container"
+        ref={boardRef}
+        style={{
+          overflowX: "scroll",
+          overflowY: "scroll",
+          paddingInlineEnd: isAddList ? "20px" : "10px",
+          maxWidth: "100vw",
+        }}>
         {cardBoards ? (
-          <>
+          <div className="board-list" ref={boardRef} style={{ paddingBlockEnd: 2 }}>
             {cardBoards.map((list, index) => {
               return (
                 <CardBoard
@@ -78,25 +101,27 @@ const Workspaces = () => {
                 />
               );
             })}
-          </>
+          </div>
         ) : null}
 
         {isAddList ? (
-          <div className="add-list" sx={{ width: 275 }}>
+          <div className="add-list" sx={{ width: 275 }} ref={inputBoxRef}>
             <CardContent className="">
               <TextField
                 placeholder="Enter list title…"
                 id="outlined-size-small"
                 size="small"
-                sx={{ width: 243, height: 22 }}
+                sx={{ width: 245, height: 22, m: -1 }}
                 onChange={(e) => setListName(e.currentTarget.value)}
               />
             </CardContent>
-            <CardActions sx={{ alignItems: "center", ml: 1 }}>
+            <CardActions sx={{ alignItems: "center", ml: 0 }}>
               <Button
                 disabled={!listName}
                 variant="contained"
-                onClick={() => handleAddList()}
+                onClick={() => {
+                  handleAddList();
+                }}
                 sx={{ mr: 1, height: 25 }}>
                 Add list
               </Button>
@@ -105,13 +130,19 @@ const Workspaces = () => {
             </CardActions>
           </div>
         ) : (
-          <Button
-            className="add-list-btn"
-            sx={{ width: 275, justifyContent: "flex-start" }}
-            onClick={() => setIsAddList(true)}>
-            <AddIcon />
-            Add another list
-          </Button>
+          <div className="add-list-btn-container" sx={{ width: 263 }}>
+            <CardContent className="">
+              <Button
+                className="add-list-btn"
+                sx={{ width: 263, justifyContent: "flex-start", mt: -3, ml: -2, mr: -2 }}
+                onClick={() => {
+                  setIsAddList(true);
+                }}>
+                <AddIcon />
+                Add another list
+              </Button>
+            </CardContent>
+          </div>
         )}
       </div>
     </DashBoardWrapper>

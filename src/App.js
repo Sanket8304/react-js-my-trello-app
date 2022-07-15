@@ -27,7 +27,15 @@ function App() {
           <SideMenu open={open} handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose} />
 
           <Box component="main" sx={{ flexGrow: 1 }}>
-            <Navigation />
+            <div
+              className="dashboard-main-container"
+              style={{
+                paddingInlineEnd: "25px",
+                maxWidth: "100vw",
+                left: open ? "230px" : "55px",
+              }}>
+              <Navigation />
+            </div>
           </Box>
         </Box>
       </div>

@@ -12,10 +12,6 @@ const Workspaces = (props) => {
   const inputRef = useRef();
   const cardListRef = useRef();
 
-  const handleAdd = () => {
-    setIsAddCard();
-  };
-
   useEffect(() => {
     let el2 = inputRef.current;
 
@@ -38,7 +34,7 @@ const Workspaces = (props) => {
           ref={cardListRef}
           style={{
             overflowY: "scroll",
-            maxHeight: list.isAddCard ? "85vh" : "80vh",
+            maxHeight: list.isAddCard ? "85vh" : "79vh",
             overflowX: "hidden",
             paddingBlockEnd: list.isAddCard ? 0 : 1,
           }}>
@@ -80,7 +76,7 @@ const Workspaces = (props) => {
 
         {list.isAddCard ? null : (
           <CardActions>
-            <Button onClick={() => handleAdd()} sx={{ mr: 1, height: 25 }}>
+            <Button onClick={() => setIsAddCard()} sx={{ mr: 1, height: 25 }}>
               <AddIcon />
               Add Card
             </Button>
