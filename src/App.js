@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import "./App.css";
 import NavBar from "./CommonComponents/NavBar";
@@ -21,22 +22,24 @@ function App() {
   return (
     <div className="App">
       <div style={{ flex: 1 }}>
-        <UtilityStyles />
-        <NavBar />
-        <Box sx={{ display: "flex" }}>
-          <SideMenu open={open} handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose} />
+        <Router>
+          <UtilityStyles />
+          <NavBar />
+          <Box sx={{ display: "flex" }}>
+            <SideMenu open={open} handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose} />
 
-          <Box component="main" sx={{ flexGrow: 1 }}>
-            <div
-              className="dashboard-main-container"
-              style={{
-                paddingInlineEnd: "25px",
-                left: open ? "230px" : "55px",
-              }}>
-              <Navigation />
-            </div>
+            <Box component="main" sx={{ flexGrow: 1 }}>
+              <div
+                className="dashboard-main-container"
+                style={{
+                  paddingInlineEnd: "25px",
+                  left: open ? "230px" : "55px",
+                }}>
+                <Navigation />
+              </div>
+            </Box>
           </Box>
-        </Box>
+        </Router>
       </div>
     </div>
   );

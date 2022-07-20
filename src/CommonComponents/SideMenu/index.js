@@ -77,29 +77,25 @@ const SideMenu = (props) => {
 
       <List>
         {SIDEMENU_OPTIONS.map((item, index) => (
-          <ListItem
-            button
-            key={item.listText}
-            disablePadding
-            sx={{ display: "block" }}
-            element={<RouterLink />}
-            to={item.url}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}>
-              <ListItemIcon
+          <ListItem button key={item.listText} disablePadding sx={{ display: "block" }}>
+            <RouterLink to={item.url} style={{ textDecoration: "none", color: "black" }}>
+              <ListItemButton
                 sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
                 }}>
-                {item.listIcon}
-              </ListItemIcon>
-              <ListItemText primary={item.listText} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}>
+                  {item.listIcon}
+                </ListItemIcon>
+                <ListItemText primary={item.listText} sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            </RouterLink>
           </ListItem>
         ))}
       </List>
