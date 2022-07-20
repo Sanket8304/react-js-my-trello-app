@@ -5,8 +5,7 @@
 .dashboard-main-container {
   display: flex;
   height: 100vh;
-  position: absolute;
   max-width: 100vw;
-  top: 25px;
+  margin-top: 25px;
   overflow: visible;
 }

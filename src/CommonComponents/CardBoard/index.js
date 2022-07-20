@@ -34,20 +34,22 @@ const Workspaces = (props) => {
           ref={cardListRef}
           style={{
             overflowY: "scroll",
-            maxHeight: list.isAddCard ? "85vh" : "79vh",
+            maxHeight: list.isAddCard ? "80vh" : "75vh",
             overflowX: "hidden",
             paddingBlockEnd: list.isAddCard ? 0 : 1,
           }}>
           {list.cardList.length > 0 && (
             <div className="card-list" ref={cardListRef} style={{ paddingBlockEnd: 2 }}>
-              {list.cardList.map((card) => (
-                <CardContent sx={{ boxShadow: 3, borderRadius: 2, marginInline: 1 }}>{card.cardTitle}</CardContent>
+              {list.cardList.map((card, index) => (
+                <CardContent sx={{ boxShadow: 3, borderRadius: 2, marginInline: 1, mb: 1, mt: index === 0 ? 1 : 0 }}>
+                  {card.cardTitle}
+                </CardContent>
               ))}
             </div>
           )}
 
           {list.isAddCard && (
-            <div className="input-with-btn" ref={inputRef}>
+            <div className="" ref={inputRef}>
               <CardContent className="">
                 <TextField
                   placeholder="Enter a title for this card…"

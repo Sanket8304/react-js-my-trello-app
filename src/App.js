@@ -31,7 +31,6 @@ function App() {
               className="dashboard-main-container"
               style={{
                 paddingInlineEnd: "25px",
-                maxWidth: "100vw",
                 left: open ? "230px" : "55px",
               }}>
               <Navigation />

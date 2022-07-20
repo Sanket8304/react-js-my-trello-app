@@ -6,9 +6,7 @@ export const DashBoardWrapper = styled.div`
     padding: 25px;
     background-color: #80c8f2;
     height: 100vh;
-    position: absolute;
-    width: 100vw;
-    left: 25px
+    width: 97vw;
     overflow: visible;
   }
 
