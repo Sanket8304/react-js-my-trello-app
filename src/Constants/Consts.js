@@ -1,113 +1,58 @@
 import React from "react";
-import EditIcon from "@mui/icons-material/Edit";
-import ArchiveIcon from "@mui/icons-material/Archive";
-import FileCopyIcon from "@mui/icons-material/FileCopy";
-import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import Dashboard from "@mui/icons-material/Dashboard";
 import WorkspacesIcon from "@mui/icons-material/Workspaces";
+import HistoryIcon from "@mui/icons-material/History";
+import StarIcon from "@mui/icons-material/Star";
+import ArticleIcon from "@mui/icons-material/Article";
+import Dashboard from "@mui/icons-material/Dashboard";
+
+import { URL_WORKSPACES } from "./Paths";
 
 export const NAVBAR_DROPDOWN_BUTTONS = [
   {
     id: 1,
     btnTitle: "Workspaces",
-    drpOptions: [
+    Workspaces: [
       {
         id: 1,
-        optionTitle: "Edit",
-        icon: <EditIcon />,
-      },
-      {
-        id: 2,
-        optionTitle: "Duplicate",
-        icon: <FileCopyIcon />,
-      },
-      {
-        id: 3,
-        optionTitle: "Archive",
-        icon: <ArchiveIcon />,
-      },
-      {
-        id: 4,
-        optionTitle: "More",
-        icon: <MoreHorizIcon />,
+        optionTitle: "My Workspaces",
+        icon: <WorkspacesIcon />,
+        url: URL_WORKSPACES,
       },
     ],
   },
   {
     id: 2,
     btnTitle: "Recent",
-    drpOptions: [
+    Recent: [
       {
         id: 1,
-        optionTitle: "Edit",
-        icon: <EditIcon />,
-      },
-      {
-        id: 2,
-        optionTitle: "Duplicate",
-        icon: <FileCopyIcon />,
-      },
-      {
-        id: 3,
-        optionTitle: "Archive",
-        icon: <ArchiveIcon />,
-      },
-      {
-        id: 4,
-        optionTitle: "More",
-        icon: <MoreHorizIcon />,
+        optionTitle: "Recent",
+        icon: <HistoryIcon />,
+        url: "",
       },
     ],
   },
   {
     id: 3,
     btnTitle: "Starred",
-    drpOptions: [
+    Starred: [
       {
         id: 1,
-        optionTitle: "Edit",
-        icon: <EditIcon />,
-      },
-      {
-        id: 2,
-        optionTitle: "Duplicate",
-        icon: <FileCopyIcon />,
-      },
-      {
-        id: 3,
-        optionTitle: "Archive",
-        icon: <ArchiveIcon />,
-      },
-      {
-        id: 4,
-        optionTitle: "More",
-        icon: <MoreHorizIcon />,
+        optionTitle: "Starred",
+        icon: <StarIcon />,
+        url: "",
       },
     ],
   },
   {
     id: 4,
     btnTitle: "Templates",
-    drpOptions: [
+    Templates: [
       {
         id: 1,
-        optionTitle: "Edit",
-        icon: <EditIcon />,
-      },
-      {
-        id: 2,
-        optionTitle: "Duplicate",
-        icon: <FileCopyIcon />,
-      },
-      {
-        id: 3,
-        optionTitle: "Archive",
-        icon: <ArchiveIcon />,
-      },
-      {
-        id: 4,
-        optionTitle: "More",
-        icon: <MoreHorizIcon />,
+        optionTitle: "Templates",
+        icon: <ArticleIcon />,
+        url: "",
       },
     ],
   },

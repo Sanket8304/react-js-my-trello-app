@@ -2,16 +2,15 @@ import styled from "styled-components";
 
 export const DashBoardWrapper = styled.div`
   .dashboard-main-container {
-    display: flex;
     padding: 25px;
     background-color: #80c8f2;
     height: 100vh;
-    width: 97vw;
-    overflow: visible;
+    margin-left: -5px;
   }
 
   .board-list {
     display: flex;
+    height: 88vh;
   }
 
   .add-list {

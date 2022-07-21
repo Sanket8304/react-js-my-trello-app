@@ -34,7 +34,7 @@ const Workspaces = (props) => {
           ref={cardListRef}
           style={{
             overflowY: "scroll",
-            maxHeight: list.isAddCard ? "80vh" : "75vh",
+            maxHeight: list.isAddCard ? "80vh" : "70vh",
             overflowX: "hidden",
             paddingBlockEnd: list.isAddCard ? 0 : 1,
           }}>

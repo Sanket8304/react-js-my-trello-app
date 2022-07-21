@@ -20,7 +20,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="App .full-width">
       <div style={{ flex: 1 }}>
         <Router>
           <UtilityStyles />
@@ -28,11 +28,10 @@ function App() {
           <Box sx={{ display: "flex" }}>
             <SideMenu open={open} handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose} />
 
-            <Box component="main" sx={{ flexGrow: 1 }}>
+            <Box component="main" sx={{ flex: 1, width: "98vw", height: "100vw" }}>
               <div
-                className="dashboard-main-container"
+                className="dashboard-main-container .full-width"
                 style={{
-                  paddingInlineEnd: "25px",
                   left: open ? "230px" : "55px",
                 }}>
                 <Navigation />
