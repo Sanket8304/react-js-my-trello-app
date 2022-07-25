@@ -5,6 +5,7 @@ export const NavBarWrapper = styled.div`
     padding: 10px;
     background-color: #375adb;
     height: 50px;
+    border: ${(props) => (props.data ? "2px solid" : null)};
   }
 
   .navbar-title-container {

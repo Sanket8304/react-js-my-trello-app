@@ -20,7 +20,7 @@ function App() {
   };
 
   return (
-    <div className="App .full-width">
+    <div className="App">
       <div style={{ flex: 1 }}>
         <Router>
           <UtilityStyles />
@@ -30,7 +30,7 @@ function App() {
 
             <Box component="main" sx={{ flex: 1, width: "97vw", height: "100vw" }}>
               <div
-                className="dashboard-main-container .full-width"
+                className="dashboard-main-container full-width"
                 style={{
                   left: open ? "230px" : "55px",
                 }}>

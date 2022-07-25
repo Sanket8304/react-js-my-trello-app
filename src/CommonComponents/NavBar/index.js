@@ -29,7 +29,7 @@ const NavBar = (props) => {
   };
 
   return (
-    <NavBarWrapper>
+    <NavBarWrapper data={open}>
       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
         <div className="main-container flex f-v-center">
           <RouterLink to={URL_DASHBOARD} style={{ textDecoration: "none", color: "black" }}>
