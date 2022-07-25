@@ -28,7 +28,7 @@ function App() {
           <Box sx={{ display: "flex" }}>
             <SideMenu open={open} handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose} />
 
-            <Box component="main" sx={{ flex: 1, width: "98vw", height: "100vw" }}>
+            <Box component="main" sx={{ flex: 1, width: "97vw", height: "100vw" }}>
               <div
                 className="dashboard-main-container .full-width"
                 style={{

@@ -75,7 +75,8 @@ const Workspaces = () => {
       <div className="dashboard-main-container .full-width" ref={boardRef}>
         <div
           style={{
-            overflow: "scroll",
+            overflowY: "hidden",
+            overflowX: "auto",
             paddingInlineEnd: isAddList ? "20px" : "10px",
             display: "flex",
           }}>

@@ -6,3 +6,19 @@
   margin-top: 50px;
   overflow: visible;
 }
+
+
+::-webkit-scrollbar {
+  height: 10px;              /* height of horizontal scrollbar ← You're missing this */
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(245, 252, 252, 0.25);
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+  background: rgb(184, 182, 182); 
+  border-radius: 10px;
+}
