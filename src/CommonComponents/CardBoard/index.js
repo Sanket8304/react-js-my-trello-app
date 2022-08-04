@@ -1,16 +1,27 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { Card, CardHeader, CardContent, Button, CardActions } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 import TextField from "@mui/material/TextField";
 
 import { CardBoardWrapper } from "./CardBoardStyle";
+import CardModal from "../CardModal";
 
 const Workspaces = (props) => {
   const { list, handleAddCards, setCardName, setIsAddCard, cardName } = props;
 
   const inputRef = useRef();
   const cardListRef = useRef();
+
+  const [modalIsOpen, setIsOpen] = useState(false);
+
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
 
   useEffect(() => {
     let el2 = inputRef.current;
@@ -85,6 +96,8 @@ const Workspaces = (props) => {
           </CardActions>
         )}
       </Card>
+
+      <CardModal />
     </CardBoardWrapper>
   );
 };
