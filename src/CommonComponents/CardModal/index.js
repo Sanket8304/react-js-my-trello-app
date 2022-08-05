@@ -17,7 +17,7 @@ const CardModal = (props) => {
 
   return (
     <CardModalWrapper>
-      <button onClick={openModal}>Open Modal</button>
+      {/* <button onClick={openModal}>Open Modal</button>
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -34,7 +34,7 @@ const CardModal = (props) => {
           <button>inside</button>
           <button>the modal</button>
         </form>
-      </Modal>
+      </Modal> */}
     </CardModalWrapper>
   );
 };

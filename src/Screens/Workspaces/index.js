@@ -6,6 +6,7 @@ import { CardContent, Button, CardActions } from "@mui/material";
 
 import { DashBoardWrapper } from "./WorkspacesStyle";
 import CardBoard from "../../CommonComponents/CardBoard";
+import { getDashboardLists } from "../../Network/WorkSpaceAPICalls";
 
 const Workspaces = () => {
   const [cardBoards, setCardBoards] = useState([]);
@@ -69,6 +70,16 @@ const Workspaces = () => {
 
     if (el2) el2.scrollIntoView({ block: "end", behavior: "smooth" });
   }, [inputBoxRef.current]);
+
+  useEffect(() => {
+    const res = async () => {
+      let data = await getDashboardLists();
+      return data;
+    };
+
+    console.log("res ->", res());
+    // setCardBoards(res.data.lists);
+  }, []);
 
   return (
     <DashBoardWrapper>
