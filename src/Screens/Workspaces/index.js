@@ -6,7 +6,13 @@ import { CardContent, Button, CardActions } from "@mui/material";
 
 import { DashBoardWrapper } from "./WorkspacesStyle";
 import CardBoard from "../../CommonComponents/CardBoard";
-import { getDashboardLists, addDashboardLists, addCardToList } from "../../Network/WorkSpaceAPICalls";
+import {
+  getDashboardLists,
+  addDashboardLists,
+  addCardToList,
+  deleteList,
+  deleteCard,
+} from "../../Network/WorkSpaceAPICalls";
 
 const Workspaces = () => {
   const [cardBoards, setCardBoards] = useState([]);
@@ -16,6 +22,12 @@ const Workspaces = () => {
 
   const boardRef = useRef();
   const inputBoxRef = useRef();
+
+  const getListData = async () => {
+    let res = await getDashboardLists();
+
+    setCardBoards(res.data.lists);
+  };
 
   const handleAddList = async () => {
     const list = {
@@ -59,10 +71,23 @@ const Workspaces = () => {
     setCardBoards(updatedCardBoards);
   };
 
-  const getListData = async () => {
-    let res = await getDashboardLists();
+  const handleDeleteList = async (listId) => {
+    let formData = {
+      listId: listId,
+    };
 
-    setCardBoards(res.data.lists);
+    let res = await deleteList(formData);
+    if (res.data.success) getListData();
+  };
+
+  const handleDeleteCard = async (listId, cardId) => {
+    let formData = {
+      listId: listId,
+      cardId: cardId,
+    };
+    // console.log(formData);
+    let res = await deleteCard(formData);
+    if (res.data.success) getListData();
   };
 
   useEffect(() => {
@@ -91,10 +116,12 @@ const Workspaces = () => {
                 <CardBoard
                   key={index}
                   list={list}
-                  handleAddCards={() => handleAddCards(list.id)}
+                  handleAddCards={(listId) => handleAddCards(listId)}
                   setCardName={(value) => setCardName(value)}
                   setIsAddCard={() => setIsAddCard(index)}
                   cardName={cardName}
+                  handleDeleteList={(listId) => handleDeleteList(listId)}
+                  handleDeleteCard={(listId, cardId) => handleDeleteCard(listId, cardId)}
                 />
               );
             })}

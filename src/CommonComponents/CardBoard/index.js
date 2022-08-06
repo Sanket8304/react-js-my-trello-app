@@ -10,7 +10,7 @@ import { CardBoardWrapper } from "./CardBoardStyle";
 import CardModal from "../CardModal";
 
 const Workspaces = (props) => {
-  const { list, handleAddCards, setCardName, setIsAddCard, cardName } = props;
+  const { list, handleAddCards, setCardName, setIsAddCard, cardName, handleDeleteList, handleDeleteCard } = props;
 
   const inputRef = useRef();
   const cardListRef = useRef();
@@ -52,7 +52,12 @@ const Workspaces = (props) => {
 
         {isEditList ? (
           <div className="edit-manu">
-            <div className="manu-item" onClick={() => setIsEditList(false)}>
+            <div
+              className="manu-item"
+              onClick={() => {
+                setIsEditList(false);
+                handleDeleteList(list.id);
+              }}>
               <DeleteForeverIcon />
               <p className="manu-text">Delete List</p>
             </div>
@@ -93,7 +98,12 @@ const Workspaces = (props) => {
                   />
                   {isEditCard && selectedCardId === card.cardId ? (
                     <div className="card-edit-manu">
-                      <div className="manu-item" onClick={() => setIsEditCard(false)}>
+                      <div
+                        className="manu-item"
+                        onClick={() => {
+                          setIsEditCard(false);
+                          handleDeleteCard(list.id, card.cardId);
+                        }}>
                         <DeleteForeverIcon />
                         <p className="manu-text">Delete Card</p>
                       </div>
@@ -120,7 +130,7 @@ const Workspaces = (props) => {
                 <Button
                   variant="contained"
                   onClick={() => {
-                    if (cardName) handleAddCards();
+                    if (cardName) handleAddCards(list.id);
                   }}
                   sx={{ mr: 1, height: 25, ml: 1 }}>
                   Add Card

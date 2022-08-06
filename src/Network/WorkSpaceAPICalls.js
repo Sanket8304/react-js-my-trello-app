@@ -12,3 +12,11 @@ export const addDashboardLists = (formData) => {
 export const addCardToList = (formData) => {
   return fetchDataFormBackend(DASHBOARD_APIS.ADD_CARD, "POST", formData, true);
 };
+
+export const deleteList = (formData) => {
+  return fetchDataFormBackend(DASHBOARD_APIS.DELETE_LIST, "POST", formData, true);
+};
+
+export const deleteCard = (formData) => {
+  return fetchDataFormBackend(DASHBOARD_APIS.DELETE_CARD, "POST", formData, true);
+};
