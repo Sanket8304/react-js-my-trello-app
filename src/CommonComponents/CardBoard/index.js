@@ -3,6 +3,8 @@ import { Card, CardHeader, CardContent, Button, CardActions } from "@mui/materia
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 import TextField from "@mui/material/TextField";
+import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 import { CardBoardWrapper } from "./CardBoardStyle";
 import CardModal from "../CardModal";
@@ -13,6 +15,9 @@ const Workspaces = (props) => {
   const inputRef = useRef();
   const cardListRef = useRef();
 
+  const [isEditList, setIsEditList] = useState(false);
+  const [isEditCard, setIsEditCard] = useState(false);
+  const [selectedCardId, setSelectedCardId] = useState(undefined);
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
@@ -38,13 +43,27 @@ const Workspaces = (props) => {
 
   return (
     <CardBoardWrapper>
-      <Card variant="outlined" className=".card-board" sx={{ width: 285, mr: 1, maxHeight: "95%" }}>
-        <CardHeader className="card-header" title={list.title} />
+      <Card variant="outlined" className="card-board" sx={{ width: 285, mr: 1, maxHeight: "95%" }}>
+        <CardHeader
+          className="card-header"
+          title={list.title}
+          action={<MoreHorizIcon onClick={() => setIsEditList(true)} />}
+        />
+
+        {isEditList ? (
+          <div className="edit-manu">
+            <div className="manu-item" onClick={() => setIsEditList(false)}>
+              <DeleteForeverIcon />
+              <p className="manu-text">Delete List</p>
+            </div>
+          </div>
+        ) : null}
+
         <div
           className="card-list"
           ref={cardListRef}
           style={{
-            overflowY: "scroll",
+            overflowY: "auto",
             maxHeight: list.isAddCard ? "80vh" : "75vh",
             overflowX: "hidden",
             paddingBlockEnd: list.isAddCard ? 0 : 1,
@@ -52,9 +71,35 @@ const Workspaces = (props) => {
           {list.cardList.length > 0 && (
             <div className="card-list" ref={cardListRef} style={{ paddingBlockEnd: 2 }}>
               {list.cardList.map((card, index) => (
-                <CardContent sx={{ boxShadow: 3, borderRadius: 2, marginInline: 1, mb: 1, mt: index === 0 ? 1 : 0 }}>
-                  {card.cardTitle}
-                </CardContent>
+                <Card
+                  className=""
+                  sx={{
+                    boxShadow: 3,
+                    borderRadius: 2,
+                    marginInline: 1,
+                    mb: 1,
+                    mt: index === 0 ? 1 : 0,
+                  }}>
+                  <CardHeader
+                    title={card.cardTitle}
+                    action={
+                      <MoreHorizIcon
+                        onClick={() => {
+                          setSelectedCardId(card.cardId);
+                          setIsEditCard(true);
+                        }}
+                      />
+                    }
+                  />
+                  {isEditCard && selectedCardId === card.cardId ? (
+                    <div className="card-edit-manu">
+                      <div className="manu-item" onClick={() => setIsEditCard(false)}>
+                        <DeleteForeverIcon />
+                        <p className="manu-text">Delete Card</p>
+                      </div>
+                    </div>
+                  ) : null}
+                </Card>
               ))}
             </div>
           )}
@@ -78,7 +123,7 @@ const Workspaces = (props) => {
                     if (cardName) handleAddCards();
                   }}
                   sx={{ mr: 1, height: 25, ml: 1 }}>
-                  Add list
+                  Add Card
                 </Button>
 
                 <CloseIcon onClick={() => setIsAddCard()} />

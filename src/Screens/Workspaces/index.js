@@ -6,7 +6,7 @@ import { CardContent, Button, CardActions } from "@mui/material";
 
 import { DashBoardWrapper } from "./WorkspacesStyle";
 import CardBoard from "../../CommonComponents/CardBoard";
-import { getDashboardLists } from "../../Network/WorkSpaceAPICalls";
+import { getDashboardLists, addDashboardLists, addCardToList } from "../../Network/WorkSpaceAPICalls";
 
 const Workspaces = () => {
   const [cardBoards, setCardBoards] = useState([]);
@@ -17,34 +17,28 @@ const Workspaces = () => {
   const boardRef = useRef();
   const inputBoxRef = useRef();
 
-  const handleAddList = () => {
+  const handleAddList = async () => {
     const list = {
       title: listName,
-      isAddCard: false,
-      cardList: [],
     };
 
-    setCardBoards([...cardBoards, list]);
+    let res = await addDashboardLists(list);
+
+    if (res.data.success) getListData();
     setIsAddList(false);
     setListName(undefined);
   };
 
-  const handleAddCards = (index) => {
+  const handleAddCards = async (listId) => {
     let updatedCardBoards = JSON.parse(JSON.stringify(cardBoards));
 
     const card = {
+      listId: listId,
       cardTitle: cardName,
     };
 
-    updatedCardBoards.map((item, idx) => {
-      if (idx === index) {
-        item.cardList = [...item.cardList, card];
-        item.isAddCard = false;
-        return item;
-      } else {
-        return item;
-      }
-    });
+    let res = await addCardToList(card);
+    if (res.data.success) getListData();
 
     setCardBoards(updatedCardBoards);
     setCardName(undefined);
@@ -65,6 +59,12 @@ const Workspaces = () => {
     setCardBoards(updatedCardBoards);
   };
 
+  const getListData = async () => {
+    let res = await getDashboardLists();
+
+    setCardBoards(res.data.lists);
+  };
+
   useEffect(() => {
     let el2 = inputBoxRef.current;
 
@@ -72,13 +72,7 @@ const Workspaces = () => {
   }, [inputBoxRef.current]);
 
   useEffect(() => {
-    const res = async () => {
-      let data = await getDashboardLists();
-      return data;
-    };
-
-    console.log("res ->", res());
-    // setCardBoards(res.data.lists);
+    getListData();
   }, []);
 
   return (
@@ -97,7 +91,7 @@ const Workspaces = () => {
                 <CardBoard
                   key={index}
                   list={list}
-                  handleAddCards={() => handleAddCards(index)}
+                  handleAddCards={() => handleAddCards(list.id)}
                   setCardName={(value) => setCardName(value)}
                   setIsAddCard={() => setIsAddCard(index)}
                   cardName={cardName}

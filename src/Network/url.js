@@ -1,8 +1,9 @@
-export const fetchDataFormBackend = (url, type) => {
+export const fetchDataFormBackend = (url, type, formData, isPost) => {
   var headers = new Headers();
   const baseUrl = process.env.REACT_APP_BASE_URL;
 
   headers.append("accept", "application/json, text/plain, */*");
+  headers.append("Content-Type", "application/json");
 
   var requestOptions = {
     method: type,
@@ -10,6 +11,8 @@ export const fetchDataFormBackend = (url, type) => {
     redirect: "follow",
     credential: "same-origin",
   };
+
+  if (isPost) requestOptions.body = JSON.stringify(formData);
 
   return fetch(baseUrl + url, requestOptions)
     .then((res) => {
